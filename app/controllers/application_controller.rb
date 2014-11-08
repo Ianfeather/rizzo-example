@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   def show
-    render "/index"
+    render "/index", layout: 'layout'
   end
 
 
