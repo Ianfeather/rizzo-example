@@ -1,0 +1,5 @@
+$: << 'lib'
+
+module RizzoExample
+
+end

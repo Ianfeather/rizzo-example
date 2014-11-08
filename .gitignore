@@ -1,0 +1,12 @@
+*.gem
+*.rbc
+*.swp
+.idea
+.bundle
+.rvmrc
+.DS_Store
+*DS_Store
+tmp
+log/*
+public/
+node_modules/
