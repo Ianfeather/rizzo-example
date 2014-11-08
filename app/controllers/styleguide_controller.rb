@@ -1,7 +1,7 @@
 class StyleguideController < ActionController::Base
 
   def show
-    render "/styleguide/#{params[:section]}"
+    render "/styleguide/section", layout: 'layout'
   end
 
 end

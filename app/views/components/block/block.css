@@ -1,5 +1,12 @@
 .block {
   width: 200px;
   height: 200px;
-  background: #99A9B4;
+}
+
+.block--happy {
+  background: green;
+}
+
+.block--sad {
+  background: red
 }
