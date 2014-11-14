@@ -1,0 +1,17 @@
+.horizontal-nav {
+  padding: 0 10px;
+
+}
+
+.horizontal-nav .nav__item{
+  display: inline-block;
+  padding: 20px 5px;
+}
+
+.horizontal-nav--primary {
+  background-color: #1D508D;
+}
+
+.horizontal-nav--primary .nav__item {
+  color: white;
+}

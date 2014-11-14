@@ -1,0 +1,14 @@
+.message {
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.message--positive {
+  background: #16C98D;
+}
+
+.message--negative {
+  background: red
+}

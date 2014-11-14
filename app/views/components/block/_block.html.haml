@@ -1,2 +1,3 @@
-.block{class: "block--#{properties[:type]}"}
-  = "I am a #{properties[:type]} type of block"
+%a.block{class: "block--#{properties[:type]}", href: properties[:href]}
+  .block__text
+    = raw(properties[:text])

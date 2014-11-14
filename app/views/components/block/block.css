@@ -1,12 +1,35 @@
 .block {
-  width: 200px;
-  height: 200px;
+  display: block;
+  height: 240px;
+  margin: 0 10px 15px 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: white;
+  position: relative;
 }
 
-.block--happy {
-  background: green;
+.block__text {
+  position: absolute;
+  bottom: 20px;
+  font-size: 1.4rem;
 }
 
-.block--sad {
-  background: red
+.block--green {
+  background: #16C98D;
+}
+
+.block--teal {
+  background: #0FDECF;
+}
+
+.block--plum {
+  background: #BF538D;
+}
+
+.block--red {
+  background: #FA5E5B;
+}
+
+.block--blue {
+  background: #206FAC;
 }

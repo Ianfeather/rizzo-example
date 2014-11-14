@@ -1,0 +1,4 @@
+.nav
+  - properties[:items].each do |item|
+    %a.nav__item{href: "/styleguide/#{item}"}
+      = item

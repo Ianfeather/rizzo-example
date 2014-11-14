@@ -1,0 +1,6 @@
+-
+  :type: "positive"
+  :message_text: "Congratulations you have verified your account"
+-
+  :type: "negative"
+  :message_text: "Sorry, we couldn't find that user"

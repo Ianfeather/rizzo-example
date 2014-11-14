@@ -5,26 +5,31 @@ module ComponentHelper
     render "components/#{type}/#{type}", properties
   end
 
-  def styleguide_component(type, properties={})
-    capture_haml do
-      haml_tag(:div, class: "styleguide-block") do
-        haml_tag(:div) do
-          haml_concat ui_component(type, properties)
-        end
-        haml_concat render "styleguide/description", properties
-      end
-    end
+  def get_component_data(component)
+    YAML.load(File.read(File.expand_path("../../../app/views/components/#{component}/#{component}.yml", __FILE__)))
+  rescue
+    nil
   end
+
+  def all_components
+    Dir.glob("app/views/components/**/*.yml").map{|c|c.split("/")[-2]}
+  end
+
+  private
 
   def load_stylesheet(type)
     path = "#{type}/#{type}"
+
+    return if loaded_stylesheets.include? path
+    loaded_stylesheets << path
+
     content_for(:stylesheets) do
       haml_tag(:link, rel: "stylesheet", href: "#{stylesheet_path(path)}")
     end
   end
 
-  def get_component_data(component)
-    YAML.load(File.read(File.expand_path("../../../app/views/components/#{component}/#{component}.yml", __FILE__)))
+  def loaded_stylesheets
+    @loaded_stylesheets ||= []
   end
 
 end

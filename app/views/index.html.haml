@@ -1,3 +1,102 @@
 = yield :stylesheets
 
-= ui_component("block", properties: {type: "happy"})
+= ui_component("horizontalnav", properties: { theme: "primary", items: [ { href: "http://rizzo.lonelyplanet.com/styleguide/design-elements/colours", text: "Lonely Planet Style Guide" }, {href: "http://ianfeather.co.uk/a-maintainable-style-guide/", text: "More about rizzo"} ]})
+
+.main
+  = ui_component("message", properties: {message_text: "This is a simple guide to a maintenance-free Style Guide.", type: "positive"})
+
+  %section
+    %h1
+      Welcome
+    %p
+      This is a tiny example implementation showing how structuring your code can lead to a maintainance-free Style Guide. This is the strategy adopted by
+      %a{href: "https://github.com/lonelyplanet/rizzo"}< Rizzo,
+      succesfully used in production on
+      %a{href: "http://www.lonelyplanet.com/france/paris"} lonelyplanet.com.
+
+    %p
+      With just a few lines of code you can have the skeleton for a fully scalable living styleguide. Rizzo is written in ruby, as is this app, but I hope I can show that the structure is so simple that it could be accomplished in any architecture including a static one.
+
+    %p
+      This simple application even has its own
+      %a{href: "/styleguide/"} style guide.
+      There aren't many components, but I've quickly added variants of the navigation, message and the link blocks below.
+
+
+  %section.grid.cf
+    .grid-cell
+      = ui_component("block", properties: {type: "simple", href: "#components-out-of-the-application", text: "Components out of the application"})
+    .grid-cell
+      = ui_component("block", properties: {type: "simple", href: "#a-few-helpers", text: "A few helpers"})
+    .grid-cell
+      = ui_component("block", properties: {type: "simple", href: "#routing", text: "Routing"})
+    .grid-cell
+      = ui_component("block", properties: {type: "simple", href: "#styleguide-views", text: "Styleguide Views"})
+    .grid-cell
+      = ui_component("block", properties: {type: "simple", href: "#worth-noting", text: "Worth noting&hellip;"})
+
+
+  %section
+    %h2#components-out-of-the-application Components out of the application
+    %p
+      For a Style Guide to update itself it has to be able to access the same components that the application uses. This means they need to be stored in their own files rather than included directly within the template.
+    %p
+      When we examine the links above, within the template, we see references to the same component five times rather than simply repeated blocks of the same.
+
+    %code
+      %pre
+        :preserve
+          .grid-cell
+            = ui_component("block", properties: {type: "simple", href: "#components-out-of-the-application", text: "Components out of the application"})
+          .grid-cell
+            = ui_component("block", properties: {type: "simple", href: "#a-few-helpers", text: "A few helpers"})
+          .grid-cell
+            = ui_component("block", properties: {type: "simple", href: "#routing", text: "Routing"})
+          .grid-cell
+            = ui_component("block", properties: {type: "simple", href: "#styleguide-views", text: "Styleguide Views"})
+          .grid-cell
+            = ui_component("block", properties: {type: "simple", href: "#worth-noting", text: "Worth noting&hellip;"})
+
+    %p
+      These components are stored within <code>app/views/components</code> but they could exist anywhere.
+
+    %h2#a-few-helpers A few helpers
+    %p
+      In the above code snippet we use the helper <code>ui_component</code> to fetch these components. In its simplest form this is just a wrapper around including a partial template and is really just a convention on our part. It does allow you to hook in other functionality to the inclusion of a component though, such as fetching the component assets:
+
+    %code
+      %pre
+        :preserve
+          def ui_component(type, properties={})
+            load_stylesheet(type)
+            render "components/type", properties
+          end
+
+    %p
+      There are another couple of bits of functionality you'd likely need:
+
+    %ul
+      %li Fetching sample data for your components in the Style Guide
+      %li Listing out all your components, for navigation within the Style Guide
+
+    %p
+      These bits are implemented in the sample
+      %a{href: "https://github.com/Ianfeather/rizzo-example/blob/master/app/helpers/component_helper.rb"} component_helper.rb on Github
+
+    %h2#routing Routing
+    %p
+      Next thing you need to do is expose application routes to your styleguide. This can be dynamic if you're using a backend, or built simply from the files you have on disk if you're using a static system.
+
+    %p
+      This sample application uses dynamic routing meaning any url that consists of
+      %code /styleguide/foo
+      will render the Style Guide view for
+      %code foo
+      as long as that component exists and there is some sample data for it.
+
+    %h2#styleguide-views Styleguide Views
+    %p
+      %a{href: "https://github.com/Ianfeather/rizzo-example/tree/master/app/views/styleguide"} https://github.com/Ianfeather/rizzo-example/tree/master/app/views/styleguide
+
+    %h2#worth-noting Worth noting&hellip;
+    %p foo

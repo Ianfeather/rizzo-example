@@ -1,0 +1,11 @@
+-
+  :items:
+    - "Item 1"
+    - "Item 2"
+  :style: "subtle"
+
+-
+  :items:
+    - "Item 1"
+    - "Item 2"
+  :style: "loud"

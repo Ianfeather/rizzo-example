@@ -1,0 +1,11 @@
+- content_for :stylesheets do
+  %link{rel: "stylesheet", href: stylesheet_path("styleguide")}
+
+.cf
+  = ui_component("nav", properties: {items: all_components})
+
+  .main-content
+    - if component_data = get_component_data(params[:section])
+      = render "section", component_data: component_data
+    - else
+      = render "error"

@@ -1,0 +1,9 @@
+- component_data.each do |data|
+
+  .styleguide-block.cf
+
+    .styleguide-component
+      = ui_component(params[:section], properties: data)
+
+    .styleguide-description
+      = render "styleguide/description", properties: data

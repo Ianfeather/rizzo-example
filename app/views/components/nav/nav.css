@@ -1,0 +1,12 @@
+.nav {
+  width: 200px;
+  float: left;
+  margin-right: 10px;
+}
+
+.nav__item {
+  display: block;
+  padding: 20px 10px;
+  background: #EEF1F3;
+  color: #1D508D;
+}

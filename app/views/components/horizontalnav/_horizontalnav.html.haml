@@ -1,0 +1,6 @@
+%nav.horizontal-nav{class: properties[:theme] ? "horizontal-nav--#{properties[:theme]}" : false}
+
+  - properties[:items].each do |item|
+
+    %a.nav__item{href: item[:href]}
+      = item[:text]
